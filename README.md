@@ -1,26 +1,26 @@
-# RapidMove Risk Radar — نسخة تجريبية
+# RapidMove Risk Radar — Experimental
 
-## ماذا يفعل؟
+## What it does
 
-يضع المؤشر نقطة برتقالية عند إغلاق شمعة عندما يرتفع ترتيب خطر حدوث حركة سعرية كبيرة خلال الشموع الثلاث التالية. الحساب مبني على خصائص OHLC لآخر 1 و3 و10 شموع والتقلب المحسوب من آخر 80 عائدًا. يتجاهل عوائد الشموع التي تعبر فجوات زمنية.
+The indicator plots an orange dot after a candle closes when the estimated risk of a large price move during the next three candles is elevated. It uses OHLC features from the latest 1, 3, and 10 candles and volatility calculated from the last 80 returns. Returns that cross time gaps are excluded.
 
-- الفريمات المدعومة والمختبرة: M1 وM5 وM15.
-- الأصول: الذهب XAUUSD وناسداك NDX100/US100 (يعتمد الاسم على وسيطك).
-- لا يتوقع صعودًا أو هبوطًا؛ لا توجد أوامر تداول أو مستويات دخول/خروج.
-- الدرجة 0–100 ترتيب نسبي للمخاطر وليست احتمالًا إحصائيًا.
-- المعاملات والعتبات مدربة على ملفات الأسعار التي رفعها المستخدم. قد تختلف النتائج على وسيط أو رمز أو فترة سوق أخرى.
+- Supported and tested timeframes: M1, M5, and M15.
+- Assets: Gold (XAUUSD) and Nasdaq (NDX100/US100; broker symbol names vary).
+- It does not predict whether price will move up or down. It places no trades and provides no entry or exit levels.
+- The 0–100 score is a relative risk ranking, not a statistical probability.
+- Model parameters and thresholds were trained on the uploaded price files. Results may differ with another broker, symbol, or market period.
 
-## التثبيت في MT5
+## Installation in MT5
 
-1. نزّل ملف `RapidMove_RiskRadar_Experimental.mq5`.
-2. في MetaTrader 5 اختر **File → Open Data Folder**.
-3. افتح `MQL5/Indicators` وانسخ ملف MQ5 إليه.
-4. افتح MetaEditor من MT5، وافتح الملف واضغط **F7** للترجمة.
-5. في MT5 حدّث نافذة Navigator، ثم اسحب المؤشر إلى شارت الذهب أو ناسداك على M1 أو M5 أو M15.
-6. إذا لم يتعرف تلقائيًا على اسم رمز وسيطك، اختر `InpAssetProfile` يدويًا: Gold أو Nasdaq.
+1. Download the file RapidMove_RiskRadar_Experimental.mq5.
+2. In MetaTrader 5, select File → Open Data Folder.
+3. Open MQL5/Indicators and copy the MQ5 file there.
+4. Open the file in MetaEditor and press F7 to compile it.
+5. In MT5, refresh the Navigator, then add the indicator to a Gold or Nasdaq chart on M1, M5, or M15.
+6. If the indicator does not recognize your broker's symbol name, set InpAssetProfile manually to Gold or Nasdaq.
 
-تظهر النقطة بعد إغلاق الشمعة، ويعرض التعليق أعلى الشارت درجة الخطر والعتبة. يمكن تعطيل النافذة المنبثقة من `InpPopupAlert`.
+The orange dot appears after a candle closes. The chart comment shows the risk score and alert cutoff. Disable pop-up alerts with InpPopupAlert.
 
-## التحقق والحدود
+## Validation and limitations
 
-اختُبرت النسخة الرياضية على أربع فترات زمنية متتابعة خارج العينة، لكن كود MQL5 نفسه لم يُترجم داخل MetaEditor هنا؛ لذلك يجب ضغط F7 في MT5 والتحقق من رسائل المترجم قبل الاستخدام. نتائج الاختبار كانت واعدة لرصد الخطر، خصوصًا ناسداك M5، ولم تثبت استراتيجية شراء/بيع مربحة. لا تستخدمه وحده لاتخاذ قرار تداول.
+The mathematical model was evaluated on four consecutive out-of-sample time periods. The MQL5 source has not been compiled in MetaEditor here, so press F7 in MT5 and check for compiler errors before use. The results were promising for detecting elevated risk, particularly on Nasdaq M5, but they do not establish a profitable buy/sell strategy. Do not use this indicator alone to make trading decisions.
