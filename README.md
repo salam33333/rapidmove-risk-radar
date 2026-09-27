@@ -24,3 +24,11 @@ The orange dot appears after a candle closes. The chart comment shows the risk s
 ## Validation and limitations
 
 The mathematical model was evaluated on four consecutive out-of-sample time periods. The MQL5 source has not been compiled in MetaEditor here, so press F7 in MT5 and check for compiler errors before use. The results were promising for detecting elevated risk, particularly on Nasdaq M5, but they do not establish a profitable buy/sell strategy. Do not use this indicator alone to make trading decisions.
+
+## Contributing
+
+See CONTRIBUTING.md for how to report issues and submit pull requests.
+
+## License
+
+This project is licensed under the MIT License. See LICENSE for details.
